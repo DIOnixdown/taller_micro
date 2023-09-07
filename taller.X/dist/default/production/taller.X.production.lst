@@ -1,0 +1,1319 @@
+
+
+Microchip MPLAB XC8 Assembler V2.41 build 20230208172133 
+                                                                                               Fri Aug 18 09:26:10 2023
+
+Microchip MPLAB XC8 C Compiler v2.41 (Free license) build 20230208172133 Og1 
+     1                           	processor	16F1939
+     2                           	pagewidth 120
+     3                           	opt	flic
+     4                           	psect	cinit,global,class=CODE,merge=1,delta=2
+     5                           	psect	bssCOMMON,global,class=COMMON,space=1,delta=1,noexec
+     6                           	psect	cstackCOMMON,global,class=COMMON,space=1,delta=1,noexec
+     7                           	psect	maintext,global,class=CODE,merge=1,split=1,delta=2
+     8                           	psect	config,global,abs,ovrld,class=CONFIG,space=4,delta=2,noexec
+     9                           	dabs	1,0x7E,2
+    10     0000                     
+    11                           ; Generated 06/07/2023 GMT
+    12                           ; 
+    13                           ; Copyright © 2023, Microchip Technology Inc. and its subsidiaries ("Microchip")
+    14                           ; All rights reserved.
+    15                           ; 
+    16                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
+      +                          ip").
+    17                           ; 
+    18                           ; Redistribution and use in source and binary forms, with or without modification, are
+    19                           ; permitted provided that the following conditions are met:
+    20                           ; 
+    21                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
+      +                          t of
+    22                           ;        conditions and the following disclaimer.
+    23                           ; 
+    24                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
+      +                          list
+    25                           ;        of conditions and the following disclaimer in the documentation and/or other
+    26                           ;        materials provided with the distribution. Publication is not required when
+    27                           ;        this file is used in an embedded application.
+    28                           ; 
+    29                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
+      +                          is
+    30                           ;        software without specific prior written permission.
+    31                           ; 
+    32                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+    33                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
+      +                          OR
+    34                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
+      +                          T,
+    35                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
+    36                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
+    37                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
+      +                          RICT
+    38                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
+      +                          SE OF
+    39                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    40                           ; 
+    41                           ; 
+    42                           ; Code-generator required, PIC16F1939 Definitions
+    43                           ; 
+    44                           ; SFR Addresses
+    45     0000                     	;# 
+    46     0001                     	;# 
+    47     0002                     	;# 
+    48     0003                     	;# 
+    49     0004                     	;# 
+    50     0005                     	;# 
+    51     0006                     	;# 
+    52     0007                     	;# 
+    53     0008                     	;# 
+    54     0009                     	;# 
+    55     000A                     	;# 
+    56     000B                     	;# 
+    57     000C                     	;# 
+    58     000D                     	;# 
+    59     000E                     	;# 
+    60     000F                     	;# 
+    61     0010                     	;# 
+    62     0011                     	;# 
+    63     0012                     	;# 
+    64     0013                     	;# 
+    65     0015                     	;# 
+    66     0016                     	;# 
+    67     0016                     	;# 
+    68     0017                     	;# 
+    69     0018                     	;# 
+    70     0019                     	;# 
+    71     001A                     	;# 
+    72     001B                     	;# 
+    73     001C                     	;# 
+    74     001E                     	;# 
+    75     001F                     	;# 
+    76     008C                     	;# 
+    77     008D                     	;# 
+    78     008E                     	;# 
+    79     008F                     	;# 
+    80     0090                     	;# 
+    81     0091                     	;# 
+    82     0092                     	;# 
+    83     0093                     	;# 
+    84     0095                     	;# 
+    85     0096                     	;# 
+    86     0097                     	;# 
+    87     0098                     	;# 
+    88     0099                     	;# 
+    89     009A                     	;# 
+    90     009B                     	;# 
+    91     009B                     	;# 
+    92     009C                     	;# 
+    93     009D                     	;# 
+    94     009E                     	;# 
+    95     010C                     	;# 
+    96     010D                     	;# 
+    97     010E                     	;# 
+    98     010F                     	;# 
+    99     0110                     	;# 
+   100     0111                     	;# 
+   101     0112                     	;# 
+   102     0113                     	;# 
+   103     0114                     	;# 
+   104     0115                     	;# 
+   105     0116                     	;# 
+   106     0117                     	;# 
+   107     0118                     	;# 
+   108     0119                     	;# 
+   109     011A                     	;# 
+   110     011B                     	;# 
+   111     011D                     	;# 
+   112     018C                     	;# 
+   113     018D                     	;# 
+   114     018F                     	;# 
+   115     0190                     	;# 
+   116     0191                     	;# 
+   117     0191                     	;# 
+   118     0192                     	;# 
+   119     0193                     	;# 
+   120     0193                     	;# 
+   121     0193                     	;# 
+   122     0194                     	;# 
+   123     0195                     	;# 
+   124     0196                     	;# 
+   125     0199                     	;# 
+   126     019A                     	;# 
+   127     019B                     	;# 
+   128     019B                     	;# 
+   129     019B                     	;# 
+   130     019B                     	;# 
+   131     019C                     	;# 
+   132     019C                     	;# 
+   133     019D                     	;# 
+   134     019E                     	;# 
+   135     019F                     	;# 
+   136     020D                     	;# 
+   137     0210                     	;# 
+   138     0211                     	;# 
+   139     0212                     	;# 
+   140     0213                     	;# 
+   141     0214                     	;# 
+   142     0215                     	;# 
+   143     0215                     	;# 
+   144     0216                     	;# 
+   145     0217                     	;# 
+   146     0291                     	;# 
+   147     0291                     	;# 
+   148     0292                     	;# 
+   149     0293                     	;# 
+   150     0294                     	;# 
+   151     0295                     	;# 
+   152     0295                     	;# 
+   153     0296                     	;# 
+   154     0298                     	;# 
+   155     0298                     	;# 
+   156     0299                     	;# 
+   157     029A                     	;# 
+   158     029B                     	;# 
+   159     029C                     	;# 
+   160     029C                     	;# 
+   161     029D                     	;# 
+   162     029E                     	;# 
+   163     029F                     	;# 
+   164     0311                     	;# 
+   165     0311                     	;# 
+   166     0312                     	;# 
+   167     0313                     	;# 
+   168     0314                     	;# 
+   169     0315                     	;# 
+   170     0315                     	;# 
+   171     0316                     	;# 
+   172     0318                     	;# 
+   173     0318                     	;# 
+   174     0319                     	;# 
+   175     031A                     	;# 
+   176     031C                     	;# 
+   177     031C                     	;# 
+   178     031D                     	;# 
+   179     031E                     	;# 
+   180     0394                     	;# 
+   181     0395                     	;# 
+   182     0396                     	;# 
+   183     0415                     	;# 
+   184     0416                     	;# 
+   185     0417                     	;# 
+   186     041C                     	;# 
+   187     041D                     	;# 
+   188     041E                     	;# 
+   189     0791                     	;# 
+   190     0792                     	;# 
+   191     0793                     	;# 
+   192     0794                     	;# 
+   193     0795                     	;# 
+   194     0798                     	;# 
+   195     0799                     	;# 
+   196     079A                     	;# 
+   197     07A0                     	;# 
+   198     07A1                     	;# 
+   199     07A2                     	;# 
+   200     07A3                     	;# 
+   201     07A4                     	;# 
+   202     07A5                     	;# 
+   203     07A6                     	;# 
+   204     07A7                     	;# 
+   205     07A8                     	;# 
+   206     07A9                     	;# 
+   207     07AA                     	;# 
+   208     07AB                     	;# 
+   209     0FE4                     	;# 
+   210     0FE5                     	;# 
+   211     0FE6                     	;# 
+   212     0FE7                     	;# 
+   213     0FE8                     	;# 
+   214     0FE9                     	;# 
+   215     0FEA                     	;# 
+   216     0FEB                     	;# 
+   217     0FED                     	;# 
+   218     0FEE                     	;# 
+   219     0FEF                     	;# 
+   220     0000                     	;# 
+   221     0001                     	;# 
+   222     0002                     	;# 
+   223     0003                     	;# 
+   224     0004                     	;# 
+   225     0005                     	;# 
+   226     0006                     	;# 
+   227     0007                     	;# 
+   228     0008                     	;# 
+   229     0009                     	;# 
+   230     000A                     	;# 
+   231     000B                     	;# 
+   232     000C                     	;# 
+   233     000D                     	;# 
+   234     000E                     	;# 
+   235     000F                     	;# 
+   236     0010                     	;# 
+   237     0011                     	;# 
+   238     0012                     	;# 
+   239     0013                     	;# 
+   240     0015                     	;# 
+   241     0016                     	;# 
+   242     0016                     	;# 
+   243     0017                     	;# 
+   244     0018                     	;# 
+   245     0019                     	;# 
+   246     001A                     	;# 
+   247     001B                     	;# 
+   248     001C                     	;# 
+   249     001E                     	;# 
+   250     001F                     	;# 
+   251     008C                     	;# 
+   252     008D                     	;# 
+   253     008E                     	;# 
+   254     008F                     	;# 
+   255     0090                     	;# 
+   256     0091                     	;# 
+   257     0092                     	;# 
+   258     0093                     	;# 
+   259     0095                     	;# 
+   260     0096                     	;# 
+   261     0097                     	;# 
+   262     0098                     	;# 
+   263     0099                     	;# 
+   264     009A                     	;# 
+   265     009B                     	;# 
+   266     009B                     	;# 
+   267     009C                     	;# 
+   268     009D                     	;# 
+   269     009E                     	;# 
+   270     010C                     	;# 
+   271     010D                     	;# 
+   272     010E                     	;# 
+   273     010F                     	;# 
+   274     0110                     	;# 
+   275     0111                     	;# 
+   276     0112                     	;# 
+   277     0113                     	;# 
+   278     0114                     	;# 
+   279     0115                     	;# 
+   280     0116                     	;# 
+   281     0117                     	;# 
+   282     0118                     	;# 
+   283     0119                     	;# 
+   284     011A                     	;# 
+   285     011B                     	;# 
+   286     011D                     	;# 
+   287     018C                     	;# 
+   288     018D                     	;# 
+   289     018F                     	;# 
+   290     0190                     	;# 
+   291     0191                     	;# 
+   292     0191                     	;# 
+   293     0192                     	;# 
+   294     0193                     	;# 
+   295     0193                     	;# 
+   296     0193                     	;# 
+   297     0194                     	;# 
+   298     0195                     	;# 
+   299     0196                     	;# 
+   300     0199                     	;# 
+   301     019A                     	;# 
+   302     019B                     	;# 
+   303     019B                     	;# 
+   304     019B                     	;# 
+   305     019B                     	;# 
+   306     019C                     	;# 
+   307     019C                     	;# 
+   308     019D                     	;# 
+   309     019E                     	;# 
+   310     019F                     	;# 
+   311     020D                     	;# 
+   312     0210                     	;# 
+   313     0211                     	;# 
+   314     0212                     	;# 
+   315     0213                     	;# 
+   316     0214                     	;# 
+   317     0215                     	;# 
+   318     0215                     	;# 
+   319     0216                     	;# 
+   320     0217                     	;# 
+   321     0291                     	;# 
+   322     0291                     	;# 
+   323     0292                     	;# 
+   324     0293                     	;# 
+   325     0294                     	;# 
+   326     0295                     	;# 
+   327     0295                     	;# 
+   328     0296                     	;# 
+   329     0298                     	;# 
+   330     0298                     	;# 
+   331     0299                     	;# 
+   332     029A                     	;# 
+   333     029B                     	;# 
+   334     029C                     	;# 
+   335     029C                     	;# 
+   336     029D                     	;# 
+   337     029E                     	;# 
+   338     029F                     	;# 
+   339     0311                     	;# 
+   340     0311                     	;# 
+   341     0312                     	;# 
+   342     0313                     	;# 
+   343     0314                     	;# 
+   344     0315                     	;# 
+   345     0315                     	;# 
+   346     0316                     	;# 
+   347     0318                     	;# 
+   348     0318                     	;# 
+   349     0319                     	;# 
+   350     031A                     	;# 
+   351     031C                     	;# 
+   352     031C                     	;# 
+   353     031D                     	;# 
+   354     031E                     	;# 
+   355     0394                     	;# 
+   356     0395                     	;# 
+   357     0396                     	;# 
+   358     0415                     	;# 
+   359     0416                     	;# 
+   360     0417                     	;# 
+   361     041C                     	;# 
+   362     041D                     	;# 
+   363     041E                     	;# 
+   364     0791                     	;# 
+   365     0792                     	;# 
+   366     0793                     	;# 
+   367     0794                     	;# 
+   368     0795                     	;# 
+   369     0798                     	;# 
+   370     0799                     	;# 
+   371     079A                     	;# 
+   372     07A0                     	;# 
+   373     07A1                     	;# 
+   374     07A2                     	;# 
+   375     07A3                     	;# 
+   376     07A4                     	;# 
+   377     07A5                     	;# 
+   378     07A6                     	;# 
+   379     07A7                     	;# 
+   380     07A8                     	;# 
+   381     07A9                     	;# 
+   382     07AA                     	;# 
+   383     07AB                     	;# 
+   384     0FE4                     	;# 
+   385     0FE5                     	;# 
+   386     0FE6                     	;# 
+   387     0FE7                     	;# 
+   388     0FE8                     	;# 
+   389     0FE9                     	;# 
+   390     0FEA                     	;# 
+   391     0FEB                     	;# 
+   392     0FED                     	;# 
+   393     0FEE                     	;# 
+   394     0FEF                     	;# 
+   395     0000                     	;# 
+   396     0001                     	;# 
+   397     0002                     	;# 
+   398     0003                     	;# 
+   399     0004                     	;# 
+   400     0005                     	;# 
+   401     0006                     	;# 
+   402     0007                     	;# 
+   403     0008                     	;# 
+   404     0009                     	;# 
+   405     000A                     	;# 
+   406     000B                     	;# 
+   407     000C                     	;# 
+   408     000D                     	;# 
+   409     000E                     	;# 
+   410     000F                     	;# 
+   411     0010                     	;# 
+   412     0011                     	;# 
+   413     0012                     	;# 
+   414     0013                     	;# 
+   415     0015                     	;# 
+   416     0016                     	;# 
+   417     0016                     	;# 
+   418     0017                     	;# 
+   419     0018                     	;# 
+   420     0019                     	;# 
+   421     001A                     	;# 
+   422     001B                     	;# 
+   423     001C                     	;# 
+   424     001E                     	;# 
+   425     001F                     	;# 
+   426     008C                     	;# 
+   427     008D                     	;# 
+   428     008E                     	;# 
+   429     008F                     	;# 
+   430     0090                     	;# 
+   431     0091                     	;# 
+   432     0092                     	;# 
+   433     0093                     	;# 
+   434     0095                     	;# 
+   435     0096                     	;# 
+   436     0097                     	;# 
+   437     0098                     	;# 
+   438     0099                     	;# 
+   439     009A                     	;# 
+   440     009B                     	;# 
+   441     009B                     	;# 
+   442     009C                     	;# 
+   443     009D                     	;# 
+   444     009E                     	;# 
+   445     010C                     	;# 
+   446     010D                     	;# 
+   447     010E                     	;# 
+   448     010F                     	;# 
+   449     0110                     	;# 
+   450     0111                     	;# 
+   451     0112                     	;# 
+   452     0113                     	;# 
+   453     0114                     	;# 
+   454     0115                     	;# 
+   455     0116                     	;# 
+   456     0117                     	;# 
+   457     0118                     	;# 
+   458     0119                     	;# 
+   459     011A                     	;# 
+   460     011B                     	;# 
+   461     011D                     	;# 
+   462     018C                     	;# 
+   463     018D                     	;# 
+   464     018F                     	;# 
+   465     0190                     	;# 
+   466     0191                     	;# 
+   467     0191                     	;# 
+   468     0192                     	;# 
+   469     0193                     	;# 
+   470     0193                     	;# 
+   471     0193                     	;# 
+   472     0194                     	;# 
+   473     0195                     	;# 
+   474     0196                     	;# 
+   475     0199                     	;# 
+   476     019A                     	;# 
+   477     019B                     	;# 
+   478     019B                     	;# 
+   479     019B                     	;# 
+   480     019B                     	;# 
+   481     019C                     	;# 
+   482     019C                     	;# 
+   483     019D                     	;# 
+   484     019E                     	;# 
+   485     019F                     	;# 
+   486     020D                     	;# 
+   487     0210                     	;# 
+   488     0211                     	;# 
+   489     0212                     	;# 
+   490     0213                     	;# 
+   491     0214                     	;# 
+   492     0215                     	;# 
+   493     0215                     	;# 
+   494     0216                     	;# 
+   495     0217                     	;# 
+   496     0291                     	;# 
+   497     0291                     	;# 
+   498     0292                     	;# 
+   499     0293                     	;# 
+   500     0294                     	;# 
+   501     0295                     	;# 
+   502     0295                     	;# 
+   503     0296                     	;# 
+   504     0298                     	;# 
+   505     0298                     	;# 
+   506     0299                     	;# 
+   507     029A                     	;# 
+   508     029B                     	;# 
+   509     029C                     	;# 
+   510     029C                     	;# 
+   511     029D                     	;# 
+   512     029E                     	;# 
+   513     029F                     	;# 
+   514     0311                     	;# 
+   515     0311                     	;# 
+   516     0312                     	;# 
+   517     0313                     	;# 
+   518     0314                     	;# 
+   519     0315                     	;# 
+   520     0315                     	;# 
+   521     0316                     	;# 
+   522     0318                     	;# 
+   523     0318                     	;# 
+   524     0319                     	;# 
+   525     031A                     	;# 
+   526     031C                     	;# 
+   527     031C                     	;# 
+   528     031D                     	;# 
+   529     031E                     	;# 
+   530     0394                     	;# 
+   531     0395                     	;# 
+   532     0396                     	;# 
+   533     0415                     	;# 
+   534     0416                     	;# 
+   535     0417                     	;# 
+   536     041C                     	;# 
+   537     041D                     	;# 
+   538     041E                     	;# 
+   539     0791                     	;# 
+   540     0792                     	;# 
+   541     0793                     	;# 
+   542     0794                     	;# 
+   543     0795                     	;# 
+   544     0798                     	;# 
+   545     0799                     	;# 
+   546     079A                     	;# 
+   547     07A0                     	;# 
+   548     07A1                     	;# 
+   549     07A2                     	;# 
+   550     07A3                     	;# 
+   551     07A4                     	;# 
+   552     07A5                     	;# 
+   553     07A6                     	;# 
+   554     07A7                     	;# 
+   555     07A8                     	;# 
+   556     07A9                     	;# 
+   557     07AA                     	;# 
+   558     07AB                     	;# 
+   559     0FE4                     	;# 
+   560     0FE5                     	;# 
+   561     0FE6                     	;# 
+   562     0FE7                     	;# 
+   563     0FE8                     	;# 
+   564     0FE9                     	;# 
+   565     0FEA                     	;# 
+   566     0FEB                     	;# 
+   567     0FED                     	;# 
+   568     0FEE                     	;# 
+   569     0FEF                     	;# 
+   570     000F                     _PORTD	set	15
+   571     008C                     _TRISAbits	set	140
+   572     008F                     _TRISD	set	143
+   573     018C                     _ANSELAbits	set	396
+   574                           
+   575                           	psect	cinit
+   576     07FC                     start_initialization:	
+   577                           ; #config settings
+   578                           
+   579     07FC                     __initialization:
+   580                           
+   581                           ; Clear objects allocated to COMMON
+   582     07FC  01F2               	clrf	__pbssCOMMON& (0+127)
+   583     07FD                     end_of_initialization:	
+   584                           ;End of C runtime variable initialization code
+   585                           
+   586     07FD                     __end_of__initialization:
+   587     07FD  0020               	movlb	0
+   588     07FE  3187  2F00         	ljmp	_main	;jump to C main() function
+   589                           
+   590                           	psect	bssCOMMON
+   591     0072                     __pbssCOMMON:
+   592     0072                     _contador:
+   593     0072                     	ds	1
+   594                           
+   595                           	psect	cstackCOMMON
+   596     0070                     __pcstackCOMMON:
+   597     0070                     ?_main:
+   598     0070                     ??_main:	
+   599                           ; 1 bytes @ 0x0
+   600                           
+   601                           
+   602                           ; 1 bytes @ 0x0
+   603     0070                     	ds	2
+   604                           
+   605                           	psect	maintext
+   606     0700                     __pmaintext:	
+   607 ;;
+   608 ;;Main: autosize = 0, tempsize = 2, incstack = 0, save=0
+   609 ;;
+   610 ;; *************** function _main *****************
+   611 ;; Defined at:
+   612 ;;		line 7 in file "main.c"
+   613 ;; Parameters:    Size  Location     Type
+   614 ;;		None
+   615 ;; Auto vars:     Size  Location     Type
+   616 ;;		None
+   617 ;; Return value:  Size  Location     Type
+   618 ;;                  1    wreg      void 
+   619 ;; Registers used:
+   620 ;;		wreg, status,2
+   621 ;; Tracked objects:
+   622 ;;		On entry : B1F/0
+   623 ;;		On exit  : 0/0
+   624 ;;		Unchanged: 0/0
+   625 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7   BANK8   BANK9  BANK10  BANK1
+      +1  BANK12
+   626 ;;      Params:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+   627 ;;      Locals:         0       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+   628 ;;      Temps:          2       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+   629 ;;      Totals:         2       0       0       0       0       0       0       0       0       0       0       0       
+      +0       0
+   630 ;;Total ram usage:        2 bytes
+   631 ;; This function calls:
+   632 ;;		Nothing
+   633 ;; This function is called by:
+   634 ;;		Startup code after reset
+   635 ;; This function uses a non-reentrant model
+   636 ;;
+   637                           
+   638     0700                     _main:	
+   639                           ;psect for function _main
+   640                           
+   641     0700                     l628:	
+   642                           ;incstack = 0
+   643                           ; Regs used in _main: [wreg+status,2]
+   644                           
+   645                           
+   646                           ;main.c: 8:     TRISD = 0x00;
+   647     0700  0021               	movlb	1	; select bank1
+   648     0701  018F               	clrf	15	;volatile
+   649     0702                     l630:
+   650                           
+   651                           ;main.c: 9:     TRISAbits.TRISA0 = 1;
+   652     0702  140C               	bsf	12,0	;volatile
+   653     0703                     l632:
+   654                           
+   655                           ;main.c: 10:     ANSELAbits.ANSA0 = 0;
+   656     0703  0023               	movlb	3	; select bank3
+   657     0704  100C               	bcf	12,0	;volatile
+   658     0705                     l634:
+   659                           
+   660                           ;main.c: 11:     TRISAbits.TRISA1 = 1;
+   661     0705  0021               	movlb	1	; select bank1
+   662     0706  148C               	bsf	12,1	;volatile
+   663     0707                     l636:
+   664                           
+   665                           ;main.c: 12:     ANSELAbits.ANSA1 = 0;
+   666     0707  0023               	movlb	3	; select bank3
+   667     0708  108C               	bcf	12,1	;volatile
+   668     0709                     l638:
+   669                           
+   670                           ;main.c: 15:         PORTD= 0b00000001;
+   671     0709  3001               	movlw	1
+   672     070A  0020               	movlb	0	; select bank0
+   673     070B  008F               	movwf	15	;volatile
+   674     070C                     l640:
+   675                           
+   676                           ;main.c: 16:         _delay((unsigned long)((500)*(20000000UL/4000.0)));
+   677     070C  300D               	movlw	13
+   678     070D  00F1               	movwf	??_main+1
+   679     070E  30AF               	movlw	175
+   680     070F  00F0               	movwf	??_main
+   681     0710  30B6               	movlw	182
+   682     0711                     u17:
+   683     0711  0B89               	decfsz	9,f
+   684     0712  2F11               	goto	u17
+   685     0713  0BF0               	decfsz	??_main,f
+   686     0714  2F11               	goto	u17
+   687     0715  0BF1               	decfsz	??_main+1,f
+   688     0716  2F11               	goto	u17
+   689     0717  3200               	nop2
+   690     0718                     l642:
+   691                           
+   692                           ;main.c: 17:         PORTD= 0b00000010;
+   693     0718  3002               	movlw	2
+   694     0719  0020               	movlb	0	; select bank0
+   695     071A  008F               	movwf	15	;volatile
+   696     071B                     l644:
+   697                           
+   698                           ;main.c: 18:         _delay((unsigned long)((500)*(20000000UL/4000.0)));
+   699     071B  300D               	movlw	13
+   700     071C  00F1               	movwf	??_main+1
+   701     071D  30AF               	movlw	175
+   702     071E  00F0               	movwf	??_main
+   703     071F  30B6               	movlw	182
+   704     0720                     u27:
+   705     0720  0B89               	decfsz	9,f
+   706     0721  2F20               	goto	u27
+   707     0722  0BF0               	decfsz	??_main,f
+   708     0723  2F20               	goto	u27
+   709     0724  0BF1               	decfsz	??_main+1,f
+   710     0725  2F20               	goto	u27
+   711     0726  3200               	nop2
+   712     0727                     l646:
+   713                           
+   714                           ;main.c: 19:         PORTD= 0b00000100;
+   715     0727  3004               	movlw	4
+   716     0728  0020               	movlb	0	; select bank0
+   717     0729  008F               	movwf	15	;volatile
+   718     072A                     l648:
+   719                           
+   720                           ;main.c: 20:         _delay((unsigned long)((500)*(20000000UL/4000.0)));
+   721     072A  300D               	movlw	13
+   722     072B  00F1               	movwf	??_main+1
+   723     072C  30AF               	movlw	175
+   724     072D  00F0               	movwf	??_main
+   725     072E  30B6               	movlw	182
+   726     072F                     u37:
+   727     072F  0B89               	decfsz	9,f
+   728     0730  2F2F               	goto	u37
+   729     0731  0BF0               	decfsz	??_main,f
+   730     0732  2F2F               	goto	u37
+   731     0733  0BF1               	decfsz	??_main+1,f
+   732     0734  2F2F               	goto	u37
+   733     0735  3200               	nop2
+   734     0736                     l650:
+   735                           
+   736                           ;main.c: 21:         PORTD= 0b00001000;
+   737     0736  3008               	movlw	8
+   738     0737  0020               	movlb	0	; select bank0
+   739     0738  008F               	movwf	15	;volatile
+   740     0739                     l652:
+   741                           
+   742                           ;main.c: 22:         _delay((unsigned long)((500)*(20000000UL/4000.0)));
+   743     0739  300D               	movlw	13
+   744     073A  00F1               	movwf	??_main+1
+   745     073B  30AF               	movlw	175
+   746     073C  00F0               	movwf	??_main
+   747     073D  30B6               	movlw	182
+   748     073E                     u47:
+   749     073E  0B89               	decfsz	9,f
+   750     073F  2F3E               	goto	u47
+   751     0740  0BF0               	decfsz	??_main,f
+   752     0741  2F3E               	goto	u47
+   753     0742  0BF1               	decfsz	??_main+1,f
+   754     0743  2F3E               	goto	u47
+   755     0744  3200               	nop2
+   756     0745                     l654:
+   757                           
+   758                           ;main.c: 23:         PORTD= 0b00010000;
+   759     0745  3010               	movlw	16
+   760     0746  0020               	movlb	0	; select bank0
+   761     0747  008F               	movwf	15	;volatile
+   762     0748                     l656:
+   763                           
+   764                           ;main.c: 24:         _delay((unsigned long)((500)*(20000000UL/4000.0)));
+   765     0748  300D               	movlw	13
+   766     0749  00F1               	movwf	??_main+1
+   767     074A  30AF               	movlw	175
+   768     074B  00F0               	movwf	??_main
+   769     074C  30B6               	movlw	182
+   770     074D                     u57:
+   771     074D  0B89               	decfsz	9,f
+   772     074E  2F4D               	goto	u57
+   773     074F  0BF0               	decfsz	??_main,f
+   774     0750  2F4D               	goto	u57
+   775     0751  0BF1               	decfsz	??_main+1,f
+   776     0752  2F4D               	goto	u57
+   777     0753  3200               	nop2
+   778     0754                     l658:
+   779                           
+   780                           ;main.c: 25:         PORTD= 0b00100000;
+   781     0754  3020               	movlw	32
+   782     0755  0020               	movlb	0	; select bank0
+   783     0756  008F               	movwf	15	;volatile
+   784     0757                     l660:
+   785                           
+   786                           ;main.c: 26:         _delay((unsigned long)((500)*(20000000UL/4000.0)));
+   787     0757  300D               	movlw	13
+   788     0758  00F1               	movwf	??_main+1
+   789     0759  30AF               	movlw	175
+   790     075A  00F0               	movwf	??_main
+   791     075B  30B6               	movlw	182
+   792     075C                     u67:
+   793     075C  0B89               	decfsz	9,f
+   794     075D  2F5C               	goto	u67
+   795     075E  0BF0               	decfsz	??_main,f
+   796     075F  2F5C               	goto	u67
+   797     0760  0BF1               	decfsz	??_main+1,f
+   798     0761  2F5C               	goto	u67
+   799     0762  3200               	nop2
+   800     0763                     l662:
+   801                           
+   802                           ;main.c: 27:         PORTD= 0b01000000;
+   803     0763  3040               	movlw	64
+   804     0764  0020               	movlb	0	; select bank0
+   805     0765  008F               	movwf	15	;volatile
+   806     0766                     l664:
+   807                           
+   808                           ;main.c: 28:         _delay((unsigned long)((500)*(20000000UL/4000.0)));
+   809     0766  300D               	movlw	13
+   810     0767  00F1               	movwf	??_main+1
+   811     0768  30AF               	movlw	175
+   812     0769  00F0               	movwf	??_main
+   813     076A  30B6               	movlw	182
+   814     076B                     u77:
+   815     076B  0B89               	decfsz	9,f
+   816     076C  2F6B               	goto	u77
+   817     076D  0BF0               	decfsz	??_main,f
+   818     076E  2F6B               	goto	u77
+   819     076F  0BF1               	decfsz	??_main+1,f
+   820     0770  2F6B               	goto	u77
+   821     0771  3200               	nop2
+   822     0772                     l666:
+   823                           
+   824                           ;main.c: 29:         PORTD= 0b10000000;
+   825     0772  3080               	movlw	128
+   826     0773  0020               	movlb	0	; select bank0
+   827     0774  008F               	movwf	15	;volatile
+   828     0775                     l668:
+   829                           
+   830                           ;main.c: 30:         _delay((unsigned long)((500)*(20000000UL/4000.0)));
+   831     0775  300D               	movlw	13
+   832     0776  00F1               	movwf	??_main+1
+   833     0777  30AF               	movlw	175
+   834     0778  00F0               	movwf	??_main
+   835     0779  30B6               	movlw	182
+   836     077A                     u87:
+   837     077A  0B89               	decfsz	9,f
+   838     077B  2F7A               	goto	u87
+   839     077C  0BF0               	decfsz	??_main,f
+   840     077D  2F7A               	goto	u87
+   841     077E  0BF1               	decfsz	??_main+1,f
+   842     077F  2F7A               	goto	u87
+   843     0780  3200               	nop2
+   844     0781                     l670:
+   845                           
+   846                           ;main.c: 32:         PORTD= 0b10000000;
+   847     0781  3080               	movlw	128
+   848     0782  0020               	movlb	0	; select bank0
+   849     0783  008F               	movwf	15	;volatile
+   850     0784                     l672:
+   851                           
+   852                           ;main.c: 33:         _delay((unsigned long)((500)*(20000000UL/4000.0)));
+   853     0784  300D               	movlw	13
+   854     0785  00F1               	movwf	??_main+1
+   855     0786  30AF               	movlw	175
+   856     0787  00F0               	movwf	??_main
+   857     0788  30B6               	movlw	182
+   858     0789                     u97:
+   859     0789  0B89               	decfsz	9,f
+   860     078A  2F89               	goto	u97
+   861     078B  0BF0               	decfsz	??_main,f
+   862     078C  2F89               	goto	u97
+   863     078D  0BF1               	decfsz	??_main+1,f
+   864     078E  2F89               	goto	u97
+   865     078F  3200               	nop2
+   866     0790                     l674:
+   867                           
+   868                           ;main.c: 34:         PORTD= 0b01000000;
+   869     0790  3040               	movlw	64
+   870     0791  0020               	movlb	0	; select bank0
+   871     0792  008F               	movwf	15	;volatile
+   872     0793                     l676:
+   873                           
+   874                           ;main.c: 35:         _delay((unsigned long)((500)*(20000000UL/4000.0)));
+   875     0793  300D               	movlw	13
+   876     0794  00F1               	movwf	??_main+1
+   877     0795  30AF               	movlw	175
+   878     0796  00F0               	movwf	??_main
+   879     0797  30B6               	movlw	182
+   880     0798                     u107:
+   881     0798  0B89               	decfsz	9,f
+   882     0799  2F98               	goto	u107
+   883     079A  0BF0               	decfsz	??_main,f
+   884     079B  2F98               	goto	u107
+   885     079C  0BF1               	decfsz	??_main+1,f
+   886     079D  2F98               	goto	u107
+   887     079E  3200               	nop2
+   888     079F                     l678:
+   889                           
+   890                           ;main.c: 36:         PORTD= 0b00100000;
+   891     079F  3020               	movlw	32
+   892     07A0  0020               	movlb	0	; select bank0
+   893     07A1  008F               	movwf	15	;volatile
+   894     07A2                     l680:
+   895                           
+   896                           ;main.c: 37:         _delay((unsigned long)((500)*(20000000UL/4000.0)));
+   897     07A2  300D               	movlw	13
+   898     07A3  00F1               	movwf	??_main+1
+   899     07A4  30AF               	movlw	175
+   900     07A5  00F0               	movwf	??_main
+   901     07A6  30B6               	movlw	182
+   902     07A7                     u117:
+   903     07A7  0B89               	decfsz	9,f
+   904     07A8  2FA7               	goto	u117
+   905     07A9  0BF0               	decfsz	??_main,f
+   906     07AA  2FA7               	goto	u117
+   907     07AB  0BF1               	decfsz	??_main+1,f
+   908     07AC  2FA7               	goto	u117
+   909     07AD  3200               	nop2
+   910     07AE                     l682:
+   911                           
+   912                           ;main.c: 38:         PORTD= 0b00010000;
+   913     07AE  3010               	movlw	16
+   914     07AF  0020               	movlb	0	; select bank0
+   915     07B0  008F               	movwf	15	;volatile
+   916     07B1                     l684:
+   917                           
+   918                           ;main.c: 39:         _delay((unsigned long)((500)*(20000000UL/4000.0)));
+   919     07B1  300D               	movlw	13
+   920     07B2  00F1               	movwf	??_main+1
+   921     07B3  30AF               	movlw	175
+   922     07B4  00F0               	movwf	??_main
+   923     07B5  30B6               	movlw	182
+   924     07B6                     u127:
+   925     07B6  0B89               	decfsz	9,f
+   926     07B7  2FB6               	goto	u127
+   927     07B8  0BF0               	decfsz	??_main,f
+   928     07B9  2FB6               	goto	u127
+   929     07BA  0BF1               	decfsz	??_main+1,f
+   930     07BB  2FB6               	goto	u127
+   931     07BC  3200               	nop2
+   932     07BD                     l686:
+   933                           
+   934                           ;main.c: 40:         PORTD= 0b00001000;
+   935     07BD  3008               	movlw	8
+   936     07BE  0020               	movlb	0	; select bank0
+   937     07BF  008F               	movwf	15	;volatile
+   938     07C0                     l688:
+   939                           
+   940                           ;main.c: 41:         _delay((unsigned long)((500)*(20000000UL/4000.0)));
+   941     07C0  300D               	movlw	13
+   942     07C1  00F1               	movwf	??_main+1
+   943     07C2  30AF               	movlw	175
+   944     07C3  00F0               	movwf	??_main
+   945     07C4  30B6               	movlw	182
+   946     07C5                     u137:
+   947     07C5  0B89               	decfsz	9,f
+   948     07C6  2FC5               	goto	u137
+   949     07C7  0BF0               	decfsz	??_main,f
+   950     07C8  2FC5               	goto	u137
+   951     07C9  0BF1               	decfsz	??_main+1,f
+   952     07CA  2FC5               	goto	u137
+   953     07CB  3200               	nop2
+   954     07CC                     l690:
+   955                           
+   956                           ;main.c: 42:         PORTD= 0b00000100;
+   957     07CC  3004               	movlw	4
+   958     07CD  0020               	movlb	0	; select bank0
+   959     07CE  008F               	movwf	15	;volatile
+   960     07CF                     l692:
+   961                           
+   962                           ;main.c: 43:         _delay((unsigned long)((500)*(20000000UL/4000.0)));
+   963     07CF  300D               	movlw	13
+   964     07D0  00F1               	movwf	??_main+1
+   965     07D1  30AF               	movlw	175
+   966     07D2  00F0               	movwf	??_main
+   967     07D3  30B6               	movlw	182
+   968     07D4                     u147:
+   969     07D4  0B89               	decfsz	9,f
+   970     07D5  2FD4               	goto	u147
+   971     07D6  0BF0               	decfsz	??_main,f
+   972     07D7  2FD4               	goto	u147
+   973     07D8  0BF1               	decfsz	??_main+1,f
+   974     07D9  2FD4               	goto	u147
+   975     07DA  3200               	nop2
+   976     07DB                     l694:
+   977                           
+   978                           ;main.c: 44:         PORTD= 0b00000010;
+   979     07DB  3002               	movlw	2
+   980     07DC  0020               	movlb	0	; select bank0
+   981     07DD  008F               	movwf	15	;volatile
+   982     07DE                     l696:
+   983                           
+   984                           ;main.c: 45:         _delay((unsigned long)((500)*(20000000UL/4000.0)));
+   985     07DE  300D               	movlw	13
+   986     07DF  00F1               	movwf	??_main+1
+   987     07E0  30AF               	movlw	175
+   988     07E1  00F0               	movwf	??_main
+   989     07E2  30B6               	movlw	182
+   990     07E3                     u157:
+   991     07E3  0B89               	decfsz	9,f
+   992     07E4  2FE3               	goto	u157
+   993     07E5  0BF0               	decfsz	??_main,f
+   994     07E6  2FE3               	goto	u157
+   995     07E7  0BF1               	decfsz	??_main+1,f
+   996     07E8  2FE3               	goto	u157
+   997     07E9  3200               	nop2
+   998     07EA                     l698:
+   999                           
+  1000                           ;main.c: 46:         PORTD= 0b00000001;
+  1001     07EA  3001               	movlw	1
+  1002     07EB  0020               	movlb	0	; select bank0
+  1003     07EC  008F               	movwf	15	;volatile
+  1004     07ED                     l700:
+  1005                           
+  1006                           ;main.c: 47:         _delay((unsigned long)((500)*(20000000UL/4000.0)));
+  1007     07ED  300D               	movlw	13
+  1008     07EE  00F1               	movwf	??_main+1
+  1009     07EF  30AF               	movlw	175
+  1010     07F0  00F0               	movwf	??_main
+  1011     07F1  30B6               	movlw	182
+  1012     07F2                     u167:
+  1013     07F2  0B89               	decfsz	9,f
+  1014     07F3  2FF2               	goto	u167
+  1015     07F4  0BF0               	decfsz	??_main,f
+  1016     07F5  2FF2               	goto	u167
+  1017     07F6  0BF1               	decfsz	??_main+1,f
+  1018     07F7  2FF2               	goto	u167
+  1019     07F8  3200               	nop2
+  1020     07F9  2F09               	goto	l638
+  1021     07FA  3180  2802         	ljmp	start
+  1022     07FC                     __end_of_main:
+  1023     007E                     btemp	set	126	;btemp
+  1024     007E                     wtemp0	set	126
+  1025                           
+  1026                           	psect	config
+  1027                           
+  1028                           ;Config register CONFIG1 @ 0x8007
+  1029                           ;	Oscillator Selection
+  1030                           ;	FOSC = HS, HS Oscillator, High-speed crystal/resonator connected between OSC1 and OSC2
+      +                           pins
+  1031                           ;	Watchdog Timer Enable
+  1032                           ;	WDTE = OFF, WDT disabled
+  1033                           ;	Power-up Timer Enable
+  1034                           ;	PWRTE = OFF, PWRT disabled
+  1035                           ;	MCLR Pin Function Select
+  1036                           ;	MCLRE = ON, MCLR/VPP pin function is MCLR
+  1037                           ;	Flash Program Memory Code Protection
+  1038                           ;	CP = OFF, Program memory code protection is disabled
+  1039                           ;	Data Memory Code Protection
+  1040                           ;	CPD = OFF, Data memory code protection is disabled
+  1041                           ;	Brown-out Reset Enable
+  1042                           ;	BOREN = ON, Brown-out Reset enabled
+  1043                           ;	Clock Out Enable
+  1044                           ;	CLKOUTEN = OFF, CLKOUT function is disabled. I/O or oscillator function on the CLKOUT 
+      +                          pin
+  1045                           ;	Internal/External Switchover
+  1046                           ;	IESO = ON, Internal/External Switchover mode is enabled
+  1047                           ;	Fail-Safe Clock Monitor Enable
+  1048                           ;	FCMEN = ON, Fail-Safe Clock Monitor is enabled
+  1049     8007                     	org	32775
+  1050     8007  3FE2               	dw	16354
+  1051                           
+  1052                           ;Config register CONFIG2 @ 0x8008
+  1053                           ;	Flash Memory Self-Write Protection
+  1054                           ;	WRT = OFF, Write protection off
+  1055                           ;	Voltage Regulator Capacitor Enable
+  1056                           ;	VCAPEN = OFF, All VCAP pin functionality is disabled
+  1057                           ;	PLL Enable
+  1058                           ;	PLLEN = OFF, 4x PLL disabled
+  1059                           ;	Stack Overflow/Underflow Reset Enable
+  1060                           ;	STVREN = ON, Stack Overflow or Underflow will cause a Reset
+  1061                           ;	Brown-out Reset Voltage Selection
+  1062                           ;	BORV = LO, Brown-out Reset Voltage (Vbor), low trip point selected.
+  1063                           ;	Low-Voltage Programming Enable
+  1064                           ;	LVP = ON, Low-voltage programming enabled
+  1065     8008                     	org	32776
+  1066     8008  3EFF               	dw	16127
+
+Data Sizes:
+    Strings     0
+    Constant    0
+    Data        0
+    BSS         1
+    Persistent  32
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMMON           14      2       3
+    BANK0            80      0       0
+    BANK1            80      0       0
+    BANK2            80      0       0
+    BANK3            80      0       0
+    BANK4            80      0       0
+    BANK5            80      0       0
+    BANK6            80      0       0
+    BANK7            80      0       0
+    BANK8            80      0       0
+    BANK9            80      0       0
+    BANK10           80      0       0
+    BANK11           80      0       0
+    BANK12           48      0       0
+
+Pointer List with Targets:
+
+    None.
+
+Critical Paths under _main in COMMON
+
+    None.
+
+Critical Paths under _main in BANK0
+
+    None.
+
+Critical Paths under _main in BANK1
+
+    None.
+
+Critical Paths under _main in BANK2
+
+    None.
+
+Critical Paths under _main in BANK3
+
+    None.
+
+Critical Paths under _main in BANK4
+
+    None.
+
+Critical Paths under _main in BANK5
+
+    None.
+
+Critical Paths under _main in BANK6
+
+    None.
+
+Critical Paths under _main in BANK7
+
+    None.
+
+Critical Paths under _main in BANK8
+
+    None.
+
+Critical Paths under _main in BANK9
+
+    None.
+
+Critical Paths under _main in BANK10
+
+    None.
+
+Critical Paths under _main in BANK11
+
+    None.
+
+Critical Paths under _main in BANK12
+
+    None.
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                 2     2      0       0
+                                              0 COMMON     2     2      0
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 0
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+
+ Address spaces:
+Name               Size   Autos  Total    Cost      Usage
+BIGRAM             3F0      0       0       0        0.0%
+EEDATA             100      0       0       0        0.0%
+NULL                 0      0       0       0        0.0%
+CODE                 0      0       0       0        0.0%
+BITCOMMON            E      0       0       1        0.0%
+BITSFR0              0      0       0       1        0.0%
+SFR0                 0      0       0       1        0.0%
+COMMON               E      2       3       2       21.4%
+BITSFR1              0      0       0       2        0.0%
+SFR1                 0      0       0       2        0.0%
+BITSFR2              0      0       0       3        0.0%
+SFR2                 0      0       0       3        0.0%
+STACK                0      0       0       3        0.0%
+BITBANK0            50      0       0       4        0.0%
+BITSFR3              0      0       0       4        0.0%
+SFR3                 0      0       0       4        0.0%
+BANK0               50      0       0       5        0.0%
+BITSFR4              0      0       0       5        0.0%
+SFR4                 0      0       0       5        0.0%
+BITBANK1            50      0       0       6        0.0%
+BITSFR5              0      0       0       6        0.0%
+SFR5                 0      0       0       6        0.0%
+BANK1               50      0       0       7        0.0%
+BITSFR6              0      0       0       7        0.0%
+SFR6                 0      0       0       7        0.0%
+BITBANK2            50      0       0       8        0.0%
+BITSFR7              0      0       0       8        0.0%
+SFR7                 0      0       0       8        0.0%
+BANK2               50      0       0       9        0.0%
+BITSFR8              0      0       0       9        0.0%
+SFR8                 0      0       0       9        0.0%
+BITBANK3            50      0       0      10        0.0%
+BITSFR9              0      0       0      10        0.0%
+SFR9                 0      0       0      10        0.0%
+BANK3               50      0       0      11        0.0%
+BITSFR10             0      0       0      11        0.0%
+SFR10                0      0       0      11        0.0%
+BITBANK4            50      0       0      12        0.0%
+BITSFR11             0      0       0      12        0.0%
+SFR11                0      0       0      12        0.0%
+BANK4               50      0       0      13        0.0%
+BITSFR12             0      0       0      13        0.0%
+SFR12                0      0       0      13        0.0%
+BITBANK5            50      0       0      14        0.0%
+BITSFR13             0      0       0      14        0.0%
+SFR13                0      0       0      14        0.0%
+BANK5               50      0       0      15        0.0%
+BITSFR14             0      0       0      15        0.0%
+SFR14                0      0       0      15        0.0%
+BITBANK6            50      0       0      16        0.0%
+BITSFR15             0      0       0      16        0.0%
+SFR15                0      0       0      16        0.0%
+BANK6               50      0       0      17        0.0%
+BITSFR16             0      0       0      17        0.0%
+SFR16                0      0       0      17        0.0%
+BITBANK7            50      0       0      18        0.0%
+BITSFR17             0      0       0      18        0.0%
+SFR17                0      0       0      18        0.0%
+BANK7               50      0       0      19        0.0%
+BITSFR18             0      0       0      19        0.0%
+SFR18                0      0       0      19        0.0%
+BITSFR19             0      0       0      20        0.0%
+SFR19                0      0       0      20        0.0%
+ABS                  0      0       3      20        0.0%
+BITBANK8            50      0       0      21        0.0%
+BITSFR20             0      0       0      21        0.0%
+SFR20                0      0       0      21        0.0%
+BANK8               50      0       0      22        0.0%
+BITSFR21             0      0       0      22        0.0%
+SFR21                0      0       0      22        0.0%
+BITBANK9            50      0       0      23        0.0%
+BITSFR22             0      0       0      23        0.0%
+SFR22                0      0       0      23        0.0%
+BANK9               50      0       0      24        0.0%
+BITSFR23             0      0       0      24        0.0%
+SFR23                0      0       0      24        0.0%
+BITBANK10           50      0       0      25        0.0%
+BITSFR24             0      0       0      25        0.0%
+SFR24                0      0       0      25        0.0%
+BANK10              50      0       0      26        0.0%
+BITSFR25             0      0       0      26        0.0%
+SFR25                0      0       0      26        0.0%
+BITBANK11           50      0       0      27        0.0%
+BITSFR26             0      0       0      27        0.0%
+SFR26                0      0       0      27        0.0%
+BANK11              50      0       0      28        0.0%
+BITSFR27             0      0       0      28        0.0%
+SFR27                0      0       0      28        0.0%
+BITBANK12           30      0       0      29        0.0%
+BITSFR28             0      0       0      29        0.0%
+SFR28                0      0       0      29        0.0%
+BANK12              30      0       0      30        0.0%
+BITSFR29             0      0       0      30        0.0%
+SFR29                0      0       0      30        0.0%
+BITSFR30             0      0       0      31        0.0%
+SFR30                0      0       0      31        0.0%
+DATA                 0      0       3      31        0.0%
+BITSFR31             0      0       0      32        0.0%
+SFR31                0      0       0      32        0.0%
+
+
+Microchip Technology PIC Macro Assembler V2.41 build 20230208172133 
+Symbol Table                                                                                   Fri Aug 18 09:26:10 2023
+
+                     u17 0711                       u27 0720                       u37 072F  
+                     u47 073E                       u57 074D                       u67 075C  
+                     u77 076B                       u87 077A                       u97 0789  
+                    l700 07ED                      l630 0702                      l640 070C  
+                    l632 0703                      l650 0736                      l642 0718  
+                    l634 0705                      l660 0757                      l652 0739  
+                    l644 071B                      l636 0707                      l628 0700  
+                    l670 0781                      l662 0763                      l654 0745  
+                    l646 0727                      l638 0709                      l680 07A2  
+                    l672 0784                      l664 0766                      l656 0748  
+                    l648 072A                      l690 07CC                      l682 07AE  
+                    l674 0790                      l666 0772                      l658 0754  
+                    l692 07CF                      l684 07B1                      l676 0793  
+                    l668 0775                      l694 07DB                      l686 07BD  
+                    l678 079F                      l696 07DE                      l688 07C0  
+                    l698 07EA                      u107 0798                      u117 07A7  
+                    u127 07B6                      u137 07C5                      u147 07D4  
+                    u157 07E3                      u167 07F2                      wreg 0009  
+                   _main 0700                     btemp 007E                     start 0002  
+                  ?_main 0070                    _PORTD 000F                    _TRISD 008F  
+                  wtemp0 007E          __initialization 07FC             __end_of_main 07FC  
+                 ??_main 0070  __end_of__initialization 07FD           __pcstackCOMMON 0070  
+             __pmaintext 0700     end_of_initialization 07FD                _TRISAbits 008C  
+    start_initialization 07FC              __pbssCOMMON 0072                ___latbits 0003  
+             _ANSELAbits 018C                 _contador 0072  
